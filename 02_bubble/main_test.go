@@ -30,18 +30,22 @@ func TestBubbleFunction(t *testing.T) {
 	}{
 		{"Test bubble sorting from already sorted array", []int{1, 2, 3, 4}, []int{1, 2, 3, 4}},
 		{"Test bubble sorting with negative numbers", []int{-1, -2, -3, -4}, []int{-4, -3, -2, -1}},
-		{"Test bubble sorting with negative numbers", []int{1, -1, -2, 3, 2, -3, -4, 0, 4}, []int{-4, -3, -2, -1, 0, 1, 2, 3, 4}},
+		{"Test bubble sorting with negative numbers", []int{1, -1, -2, 3, 2, -3, -4, 0, 4},
+			[]int{-4, -3, -2, -1, 0, 1, 2, 3, 4}},
 		{"Test bubble sorting sorting with Zero", []int{0}, []int{0}},
 		{"Test bubble sorting with nil", nil, nil},
 	}
 
 	for _, testCase := range testCases {
+		input := testCase.input
+		expected := testCase.expected
+
 		t.Run(testCase.description, func(t *testing.T) {
-			result := bubble(testCase.input)
+			result := bubble(input)
 
 			for i, actual := range result {
-				if testCase.expected[i] != actual {
-					t.Errorf("Unexpected output, expected: %d, actual: %d", testCase.expected[i], actual)
+				if expected[i] != actual {
+					t.Errorf("Unexpected output, expected: %d, actual: %d", expected[i], actual)
 				}
 			}
 		})

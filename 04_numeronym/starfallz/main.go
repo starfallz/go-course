@@ -17,9 +17,9 @@ func main() {
 }
 
 func numeronyms(vals ...string) []string {
-	var result []string
-	for _, val := range vals {
-		result = append(result, convertString(val))
+	result := make([]string, len(vals))
+	for i, val := range vals {
+		result[i] = convertString(val)
 	}
 	return result
 }
